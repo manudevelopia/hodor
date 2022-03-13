@@ -1,4 +1,4 @@
-package info.developia.hodor.annotation.processor;
+package info.developia.hodor.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

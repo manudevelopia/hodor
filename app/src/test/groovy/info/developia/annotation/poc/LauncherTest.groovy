@@ -1,8 +1,8 @@
 package info.developia.annotation.poc
 
-import info.developia.hodor.annotation.processor.Hodor
-import info.developia.hodor.annotation.processor.HoldTheDoor
-import info.developia.hodor.lib.HodorException
+import info.developia.hodor.annotation.Hodor
+import info.developia.hodor.annotation.HoldTheDoor
+import info.developia.hodor.HodorException
 import spock.lang.Specification
 
 class Application {

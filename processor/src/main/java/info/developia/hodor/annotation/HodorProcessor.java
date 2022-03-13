@@ -1,9 +1,9 @@
-package info.developia.hodor.annotation.processor;
+package info.developia.hodor.annotation;
 
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import info.developia.hodor.lib.HodorException;
+import info.developia.hodor.HodorException;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -30,15 +30,15 @@ public class HodorProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnvironment) {
-        roundEnvironment.getElementsAnnotatedWith(Hodor.class).stream().findFirst().ifPresent(element -> {
-            Element method = roundEnvironment.getElementsAnnotatedWith(HoldTheDoor.class).stream().findFirst()
+        roundEnvironment.getElementsAnnotatedWith(info.developia.hodor.annotation.Hodor.class).stream().findFirst().ifPresent(element -> {
+            Element method = roundEnvironment.getElementsAnnotatedWith(info.developia.hodor.annotation.HoldTheDoor.class).stream().findFirst()
                     .orElseThrow(() -> new HodorException("Hodor does not know what door to hold"));
 
             MethodSpec main = MethodSpec.methodBuilder("main")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(void.class)
                     .addParameter(String[].class, "args")
-                    .addStatement("$T.holdTheDoor((a) -> $L.$L(args),(t) -> $L.$L(t))", info.developia.hodor.lib.Hodor.class,
+                    .addStatement("$T.holdTheDoor((a) -> $L.$L(args),(t) -> $L.$L(t))", info.developia.hodor.Hodor.class,
                             element.getEnclosingElement().getSimpleName(), element.getSimpleName(),
                             method.getEnclosingElement().getSimpleName(), method.getSimpleName())
                     .build();

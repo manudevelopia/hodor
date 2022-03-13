@@ -1,7 +1,7 @@
 package info.developia.annotation.poc;
 
-import info.developia.hodor.annotation.processor.Hodor;
-import info.developia.hodor.annotation.processor.HoldTheDoor;
+import info.developia.hodor.annotation.Hodor;
+import info.developia.hodor.annotation.HoldTheDoor;
 
 public class Launcher {
     @Hodor
