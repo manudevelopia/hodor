@@ -6,12 +6,13 @@ plugins {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor project(':processor')
-    implementation project(':processor')
+    annotationProcessor 'info.developia.hodor:hodor:0.1-SNAPSHOT'
+    implementation 'info.developia.hodor:hodor:0.1-SNAPSHOT'
 
     testImplementation 'org.codehaus.groovy:groovy:3.0.7'
     testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
