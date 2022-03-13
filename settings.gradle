@@ -1,1 +1,3 @@
 rootProject.name = 'hodor'
+
+include ':annotations', ':processor', ':lib', ':app'
