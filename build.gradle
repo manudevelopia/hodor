@@ -6,7 +6,7 @@ plugins {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'info.developia.hodor'
+            groupId = 'info.developia'
             artifactId = 'hodor'
             version = '0.1-SNAPSHOT'
             from components.java
