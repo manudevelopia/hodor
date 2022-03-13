@@ -3,7 +3,7 @@ package info.developia.hodor.annotation.processor;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import info.developia.hodor.HodorException;
+import info.developia.hodor.lib.HodorException;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -38,12 +38,12 @@ public class HodorProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(void.class)
                     .addParameter(String[].class, "args")
-                    .addStatement("$T.holdTheDoor((a) -> $L.$L(args),(t) -> $L.$L(t))", info.developia.hodor.Hodor.class,
+                    .addStatement("$T.holdTheDoor((a) -> $L.$L(args),(t) -> $L.$L(t))", info.developia.hodor.lib.Hodor.class,
                             element.getEnclosingElement().getSimpleName(), element.getSimpleName(),
                             method.getEnclosingElement().getSimpleName(), method.getSimpleName())
                     .build();
 
-            TypeSpec hodorWapper = TypeSpec.classBuilder(element.getSimpleName() + "Hodor")
+            TypeSpec hodorWapper = TypeSpec.classBuilder(element.getEnclosingElement().getSimpleName() + "Hodor")
                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                     .addMethod(main)
                     .build();
