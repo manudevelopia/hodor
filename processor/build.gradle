@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.squareup:javapoet:1.13.0'
+    implementation project(':annotation')
 
     testAnnotationProcessor project(':processor')
     testImplementation project(':processor')
