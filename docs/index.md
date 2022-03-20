@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+# Hodor
+Hodor is the lib that holds the door before a java application unexpected exits.
 
-You can use the [editor on GitHub](https://github.com/manudevelopia/hodor/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+# Why Hodor?
+Sometimes you want to make your java application to say something before it crashes. 
+Maybe this is not beautiful, but does the trick.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Usage
 
-### Markdown
+### Add dependency
+Check latest version on [releases page](https://github.com/manudevelopia/hodor/releases) and add number to the dependency.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+**Gradle**
+```
+implementation 'com.github.hodor:hodor:1.0.0'
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+**Maven**
+```
+<groupId>com.github.hodor</groupId>
+<artifactId>hodor</artifactId>
+<version>0.0.1</version>
+```
 
-### Jekyll Themes
+### Add to your application
+TODO
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/manudevelopia/hodor/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Using Annotation
+TODO
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### Not using Annotation
+TODO
