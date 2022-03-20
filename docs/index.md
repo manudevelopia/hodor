@@ -19,7 +19,7 @@ implementation 'com.github.hodor:hodor:1.0.0'
 ```
 <groupId>com.github.hodor</groupId>
 <artifactId>hodor</artifactId>
-<version>0.0.1</version>
+<version>1.0.0</version>
 ```
 
 ### Add to your application
