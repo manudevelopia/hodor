@@ -1,4 +1,4 @@
-package com.sample.app;
+package info.developia.hodor;
 
 import java.util.Arrays;
 

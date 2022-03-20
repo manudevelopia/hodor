@@ -1,8 +1,6 @@
-package hodor
+package info.developia.hodor
 
-import com.sample.app.Application
-import info.developia.hodor.Hodor
-import info.developia.hodor.HodorException
+
 import spock.lang.Specification
 
 class ApplicationTest extends Specification {

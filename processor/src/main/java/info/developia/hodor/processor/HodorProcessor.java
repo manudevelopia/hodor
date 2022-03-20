@@ -1,9 +1,11 @@
-package info.developia.hodor.annotation;
+package info.developia.hodor.processor;
 
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import info.developia.hodor.HodorException;
+import info.developia.hodor.annotation.Hodor;
+import info.developia.hodor.annotation.HoldTheDoor;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
