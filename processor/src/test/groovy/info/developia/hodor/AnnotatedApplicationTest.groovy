@@ -3,7 +3,7 @@ package info.developia.hodor
 import spock.lang.Specification
 
 class AnnotatedApplicationTest extends Specification {
-    def "should return a HodorException explainig what was wrong"() {
+    def "should return a HodorException explaining what was wrong"() {
         when:
         AnnotatedApplicationHodor.main(null)
         then:
