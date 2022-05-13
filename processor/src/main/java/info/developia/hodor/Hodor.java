@@ -4,6 +4,9 @@ import java.util.function.Consumer;
 
 public class Hodor {
 
+    private Hodor() {
+    }
+
     public static void holdTheDoor(Consumer<String[]> applicationMain, Consumer<Throwable> lastAction) {
         try {
             applicationMain.accept(null);

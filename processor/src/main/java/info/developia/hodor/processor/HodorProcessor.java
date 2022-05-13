@@ -45,14 +45,14 @@ public class HodorProcessor extends AbstractProcessor {
                             method.getEnclosingElement().getSimpleName(), method.getSimpleName())
                     .build();
 
-            TypeSpec hodorWapper = TypeSpec.classBuilder(element.getEnclosingElement().getSimpleName() + "Hodor")
+            TypeSpec hodorWrapper = TypeSpec.classBuilder(element.getEnclosingElement().getSimpleName() + "Hodor")
                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                     .addMethod(main)
                     .build();
 
             try {
                 String packageName = processingEnv.getElementUtils().getPackageOf(element).getQualifiedName().toString();
-                JavaFile.builder(packageName, hodorWapper).build().writeTo(filer);
+                JavaFile.builder(packageName, hodorWrapper).build().writeTo(filer);
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new HodorException("Hodor doesn't know how to hold the door", e);
@@ -65,17 +65,5 @@ public class HodorProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return Set.of(Hodor.class.getCanonicalName(), HoldTheDoor.class.getCanonicalName());
-    }
-
-    private void error(String message, Element element) {
-        messager.printMessage(Diagnostic.Kind.ERROR, message, element);
-    }
-
-    private void error(String message) {
-        messager.printMessage(Diagnostic.Kind.ERROR, message);
-    }
-
-    private void note(String message) {
-        messager.printMessage(Diagnostic.Kind.NOTE, message);
     }
 }
