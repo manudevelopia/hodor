@@ -1,6 +1,6 @@
 package info.developia.hodor
 
-
+import info.developia.application.Application
 import spock.lang.Specification
 
 class ApplicationTest extends Specification {

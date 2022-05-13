@@ -1,5 +1,6 @@
 package info.developia.hodor
 
+import info.developia.application.AnnotatedApplicationHodor
 import spock.lang.Specification
 
 class AnnotatedApplicationTest extends Specification {

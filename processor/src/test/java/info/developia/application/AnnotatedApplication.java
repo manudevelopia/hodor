@@ -1,4 +1,4 @@
-package info.developia.hodor;
+package info.developia.application;
 
 import info.developia.hodor.annotation.Hodor;
 import info.developia.hodor.annotation.HoldTheDoor;
