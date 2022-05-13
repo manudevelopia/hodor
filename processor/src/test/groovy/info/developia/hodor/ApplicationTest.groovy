@@ -4,13 +4,14 @@ package info.developia.hodor
 import spock.lang.Specification
 
 class ApplicationTest extends Specification {
-    ByteArrayOutputStream outContent
+    ByteArrayOutputStream log
     boolean isMetricSent
-    ArrayList<String> args = ['Osha', 'Bran', 'Rickon', 'Meera Reed', 'Jojen Reed']
+    List<String> args
 
     def setup() {
-        outContent = new ByteArrayOutputStream()
-        System.setOut(new PrintStream(outContent))
+        args = []
+        log = new ByteArrayOutputStream()
+        System.setOut(new PrintStream(log))
         isMetricSent = false
     }
 
@@ -25,12 +26,14 @@ class ApplicationTest extends Specification {
     }
 
     def "Hodor should not block args"() {
+        given:
+        args = ['Osha', 'Bran', 'Rickon', 'Meera Reed', 'Jojen Reed']
         when:
         Hodor.holdTheDoor(
                 { Application.main(args as String[]) },
                 { t -> lastAction(t) })
         then:
-        outContent.toString().contains(args.toString())
+        log.toString().contains(args.toString())
         thrown(HodorException)
     }
 
@@ -41,7 +44,7 @@ class ApplicationTest extends Specification {
                 { t -> lastAction(t) })
         then:
         isMetricSent
-        outContent.toString().endsWith("Never forget to close the door!\n")
+        log.toString().endsWith("Never forget to close the door!\n")
         thrown(HodorException)
     }
 
