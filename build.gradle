@@ -1,0 +1,79 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = 'info.developia.hodor'
+archivesBaseName = 'hodor'
+version = '1.0-SNAPSHOT'
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+            pom {
+                name = 'publish-java'
+                description = 'Demo of how to publish a Java Gradle based project to Maven Central'
+                url = 'https://github.com/open-source-release-demo/publish-java'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'pjfanning'
+                        name = 'PJ Fanning'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/open-source-release-demo/publish-java'
+                    connection = 'scm:git://github.com/open-source-release-demo/publish-java.git'
+                    developerConnection = 'scm:git://github.com/open-source-release-demo/publish-java.git'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+ext.genOutputDir = file("$buildDir/generated-resources")
+
+task generateVersionTxt()  {
+    ext.outputFile = file("$genOutputDir/version.txt")
+    outputs.file(outputFile)
+    doLast {
+        outputFile.text =
+                """GroupId: ${project.group}
+Name: ${project.name}
+Version: $version
+Build-time: ${java.time.LocalDateTime.now()}
+"""
+    }
+}
+
+sourceSets.main.output.dir genOutputDir, builtBy: generateVersionTxt
