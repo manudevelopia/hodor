@@ -9,6 +9,11 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    api project(':processor')
+    api project(':annotation')
+}
+
 group = 'info.developia.hodor'
 archivesBaseName = 'hodor'
 version = '1.0-SNAPSHOT'
@@ -61,9 +66,17 @@ signing {
     sign publishing.publications.mavenJava
 }
 
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
 ext.genOutputDir = file("$buildDir/generated-resources")
 
-task generateVersionTxt()  {
+task generateVersionTxt() {
     ext.outputFile = file("$genOutputDir/version.txt")
     outputs.file(outputFile)
     doLast {
