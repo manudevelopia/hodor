@@ -5,18 +5,25 @@ plugins {
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation project(':processor')
-    implementation project(':annotation')
-}
-
 group = 'info.developia'
 archivesBaseName = 'hodor'
 version = '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'com.squareup:javapoet:1.13.0'
+
+    testImplementation 'org.codehaus.groovy:groovy:3.0.10'
+    testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+repositories {
+    mavenCentral()
+}
 
 nexusPublishing {
     repositories {
