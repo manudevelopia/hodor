@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'groovy'
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
@@ -12,6 +13,7 @@ version = '1.0-SNAPSHOT'
 dependencies {
     implementation 'com.squareup:javapoet:1.13.0'
 
+    testAnnotationProcessor project
     testImplementation 'org.codehaus.groovy:groovy:3.0.10'
     testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
     testImplementation 'junit:junit:4.13.2'
@@ -49,12 +51,4 @@ publishing {
 
 signing {
     sign publishing.publications.mavenJava
-}
-
-jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    dependsOn configurations.runtimeClasspath
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
 }
