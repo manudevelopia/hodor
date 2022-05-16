@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    api project(':processor')
-    api project(':annotation')
+    implementation project(':processor')
+    implementation project(':annotation')
 }
 
 group = 'info.developia.hodor'
