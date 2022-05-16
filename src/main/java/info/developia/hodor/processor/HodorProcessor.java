@@ -12,6 +12,7 @@ import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
@@ -65,5 +66,10 @@ public class HodorProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return Set.of(Hodor.class.getCanonicalName(), HoldTheDoor.class.getCanonicalName());
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.RELEASE_16;
     }
 }
