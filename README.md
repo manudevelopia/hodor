@@ -46,6 +46,7 @@ build/generated/sources/annotationProcessor/info/developia/application/AppHodor.
 ``` 
 - Execute generated AppHodor.java on your IDE or modify your jar command to make AppHodor class as starting point. 
 
+You can find an [AnnotatedApplication example](src/test/java/info/developia/application/AnnotatedApplication.java).
 
 
 ### Not using Annotation
@@ -73,3 +74,4 @@ public class App {
 ```
 - Execute modified class on your IDE. 
 
+You can find an [NonAnnotatedApplication example](src/test/java/info/developia/application/NonAnnotatedApplication.java).
