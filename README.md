@@ -20,7 +20,7 @@ Use this method to: write a log, send a metric, a message, etc, etc... in the en
 ### Using Annotation
 - Add dependency to build.gradle
 ```
-compileOnly 'info.developia:hodor:0.1'
+annotationProcessor 'info.developia:hodor:0.1'
 implementation 'info.developia:hodor:0.1'
 ```
 - Add @Hodor annotation to your current main method and create a method with your desired name but that accepts Throwable as argument.
