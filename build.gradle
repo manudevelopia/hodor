@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'info.developia.lib'
-version = '1.2-SNAPSHOT'
+version = '0.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
