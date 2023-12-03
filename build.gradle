@@ -1,31 +1,33 @@
 plugins {
     id 'java-library'
-    id 'groovy'
     id 'maven-publish'
+    id 'io.github.gradle-nexus.publish-plugin' version '2.0.0-rc-1'
     id 'signing'
-    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+    id 'groovy'
 }
 
-group = 'info.developia'
-archivesBaseName = 'hodor'
-version = '1.0-SNAPSHOT'
+group = 'info.developia.lib'
+version = '1.2-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     implementation 'com.squareup:javapoet:1.13.0'
 
     testAnnotationProcessor project
-    testImplementation 'org.codehaus.groovy:groovy:3.0.10'
-    testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
-    testImplementation 'junit:junit:4.13.2'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+testing {
+    suites {
+        test {
+            useSpock('2.2-groovy-3.0')
+        }
+    }
 }
 
-repositories {
-    mavenCentral()
-}
+
 
 nexusPublishing {
     repositories {
@@ -34,11 +36,6 @@ nexusPublishing {
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
-}
-
-java {
-    withJavadocJar()
-    withSourcesJar()
 }
 
 publishing {
